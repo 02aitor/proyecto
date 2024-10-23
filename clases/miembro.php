@@ -2,13 +2,11 @@
 
 abstract class Miembro
 {
-    
-    protected int $id;
-    protected string $nombre;
-    protected string $apellidos;
-    protected string $email;
-    protected int $edad;
-
+    private int $id;
+    private string $nombre;
+    private string $apellidos;
+    private string $email;
+    private int $edad;
 
     public function __construct(int $id, string $nombre, string $apellidos, string $email, int $edad)
     {
@@ -18,8 +16,6 @@ abstract class Miembro
         $this->email = $email;
         $this->edad = $edad;
     }
-  
-
 
     
     public function getId(): int
@@ -31,12 +27,10 @@ abstract class Miembro
     {
         return $this->nombre;
     }
-
     public function getApellidos(): string
     {
         return $this->apellidos;
     }
-
 
     public function getEmail(): string
     {
@@ -47,8 +41,6 @@ abstract class Miembro
     {
         return $this->edad;
     }
-
-    
     public function setNombre(string $nombre): void
     {
         $this->nombre = $nombre;
