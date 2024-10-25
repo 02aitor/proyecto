@@ -17,7 +17,6 @@ abstract class Miembro
         $this->edad = $edad;
     }
 
-    
     public function getId(): int
     {
         return $this->id;
@@ -55,11 +54,9 @@ abstract class Miembro
     {
         $this->email = $email;
     }
-
     public function setEdad(int $edad): void
     {
         $this->edad = $edad;
     }
-
 }
 ?>

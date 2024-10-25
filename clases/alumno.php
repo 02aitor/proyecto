@@ -1,9 +1,15 @@
 <?php
-
-class Alumno {
+class Alumno extends Miembro{
  
     private $asignaturas = [];
     private $cursoAbonado = false;
+    private $edad;
+    public function __construct($edad) { 
+        $this->edad= $edad;
+        $this->cursoAbonado = false;
+        $this->asignaturas = [];
+
+    }
 
     public function abonarCurso() {
         $this->cursoAbonado = true;
@@ -29,16 +35,14 @@ class Alumno {
             echo "No estás matriculado en la asignatura: $asignatura.\n";
         }
     }
-
-
     public static function crearAlumnosDeMuestra() {
         $alumnos = [];
-        $alumno1 = new Alumno();
+        $alumno1 = new Alumno(20);
         $alumno1->abonarCurso();
         $alumno1->matricularseEnAsignatura("Matemáticas");
         $alumno1->matricularseEnAsignatura("Historia");
 
-        $alumno2 = new Alumno();
+        $alumno2 = new Alumno(22);
         $alumno2->matricularseEnAsignatura("Biología");
         $alumno2->matricularseEnAsignatura("Química");
 
