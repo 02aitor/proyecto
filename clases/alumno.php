@@ -1,4 +1,5 @@
 <?php
+include 'miembro.php';
 class Alumno extends Miembro{
  
     private $asignaturas = [];
@@ -29,7 +30,7 @@ class Alumno extends Miembro{
         $key = array_search($asignatura, $this->asignaturas);
         if ($key !== false) {
             unset($this->asignaturas[$key]);
-            $this->asignaturas = array_values($this->asignaturas); // Reindexar el array
+            $this->asignaturas = array_values($this->asignaturas); 
             echo "Baja en la asignatura: $asignatura.\n";
         } else {
             echo "No estás matriculado en la asignatura: $asignatura.\n";
