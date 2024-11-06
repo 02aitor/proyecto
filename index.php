@@ -14,20 +14,20 @@ $alumnos = Alumno::crearAlumnosDeMuestra($asignaturas);
 
 echo "<h2>Alumnos</h2>";
 foreach ($alumnos as $alumno) {
-    echo ", Nombre: " . $alumno->getNombre() . 
+    echo "<li>" . "Nombre: " . $alumno->getNombre() . 
          ", Apellidos: " . $alumno->getApellidos() . 
          ", Email: " . $alumno->getEmail() . 
          ", Edad: " . $alumno->getEdad() . 
          ", Curso Abonado: " . ($alumno->isCursoAbonado() ? "Sí" : "No") . 
          ", Asignaturas: " . implode(", ", $alumno->getAsignaturas()) . 
-         " }<br>";
+         " <br>";
 }
 
 $profesores = Profesor::crearProfesoresDeMuestra($asignaturas);
 
 echo "<h2>Listado profesores</h2>";
 foreach ($profesores as $profesor) {
-    echo $profesor . "<br>"; 
+    echo "<li>" . $profesor . "<br>"; 
 }
 
 
@@ -35,7 +35,7 @@ $asignaturas = Asignatura::crearAsignaturasDeMuestra();
 
 echo "<h2>Listado de Asignaturas</h2>";
 foreach ($asignaturas as $asignatura) {
-    echo ", Nombre: " . $asignatura->getNombre() . ", Créditos: " . $asignatura->getCreditos() . " }<br>";
+    echo "<li>" ."Nombre: " . $asignatura->getNombre() . ", Créditos: " . $asignatura->getCreditos() . " <br>";
 }
 
 $alumnos = Alumno::crearAlumnosDeMuestra($asignaturas);
@@ -47,13 +47,13 @@ $alumnosFiltrados = array_filter($alumnos, function($alumno) {
 
 echo "<h2>Listado de Alumnos (<= 23 años)</h2>";
 foreach ($alumnosFiltrados as $alumno) {
-    echo  ", Nombre: " . $alumno->getNombre() . 
+    echo "<li>" . "Nombre: " . $alumno->getNombre() . 
          ", Apellidos: " . $alumno->getApellidos() . 
          ", Email: " . $alumno->getEmail() . 
          ", Edad: " . $alumno->getEdad() . 
          ", Curso Abonado: " . ($alumno->isCursoAbonado() ? "Sí" : "No") . 
          ", Asignaturas: " . implode(", ", $alumno->getAsignaturas()) . 
-         " }<br>";
+         " <br>";
 }
 $alumnos[0]->matricularEnAsignatura($asignaturas[0]);  
 $alumnos[1]->matricularEnAsignatura($asignaturas[0]);  
@@ -75,7 +75,7 @@ $alumnos[9]->matricularEnAsignatura($asignaturas[0]);
 echo "<h2>Alumnos con al menos dos asignaturas</h2>";
 foreach ($alumnos as $alumno) {
     if (count($alumno->getAsignaturas()) >= 2) { 
-        echo "Nombre: " . $alumno->getNombre() . ", Email: " . $alumno->getEmail() . "<br>";
+        echo "<li>" .  "Nombre: " . $alumno->getNombre() . ", Email: " . $alumno->getEmail() . "<br>";
     }
 }
 ?>

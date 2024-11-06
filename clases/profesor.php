@@ -29,13 +29,12 @@ class Profesor extends Miembro {
     }
 
     public function __toString(): string { 
-        return "Profesor {id: " . $this->getId() .
-               ", nombre: " . $this->getNombre() .
+        return "Profesor  Nombre: " . $this->getNombre() .
                ", apellidos: " . $this->getApellidos() .
                ", email: " . $this->getEmail() .
                ", edad: " . $this->getEdad() .
                ", titular: " . ($this->titular ? "Sí" : "No") .
-               ", asignatura: " . $this->asignatura . "}";
+               ", asignatura: " . $this->asignatura . "";
     }
 }
 ?>
