@@ -1,11 +1,9 @@
 <?php
 class Asignatura {
-  
     private $id;
     private $nombre;
     private $creditos;
 
-   
     public function __construct($id, $nombre, $creditos) {
         $this->id = $id;
         $this->nombre = $nombre;
@@ -24,22 +22,15 @@ class Asignatura {
         return $this->creditos;
     }
 
+    // Método estático para crear asignaturas de muestra
     public static function crearAsignaturasDeMuestra() {
         return [
-            new Asignatura(1, "Matemáticas", 5),
-            new Asignatura(2, "Física", 4),
-            new Asignatura(3, "Química", 3),
-            new Asignatura(4, "Historia", 2),
-            new Asignatura(5, "Lengua", 4)
+            new Asignatura(1, "DWES", 7),
+            new Asignatura(2, "DWEC", 6),
+            new Asignatura(3, "DIW", 4),
+            new Asignatura(4, "DAW", 4),
         ];
     }
 }
 
-$asignaturasDeMuestra = Asignatura::crearAsignaturasDeMuestra();
-foreach ($asignaturasDeMuestra as $asignatura) {
-    echo "ID: " . $asignatura->getId() . "\n";
-    echo "Nombre: " . $asignatura->getNombre() . "\n";
-    echo "Créditos: " . $asignatura->getCreditos() . "\n";
-    echo "-------------------------\n";
-}
 ?>

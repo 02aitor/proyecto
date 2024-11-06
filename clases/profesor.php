@@ -1,45 +1,41 @@
 <?php
-include 'miembro.php';
+include_once('clases/Miembro.php');
+
 class Profesor extends Miembro {
+    protected bool $titular;  
+    protected string $asignatura; 
 
-    private $titular;
-    private $asignatura;
-
-    
-    public function __construct($titular, $asignatura) {
-        $this->titular = $titular;
+    public function __construct(int $id, string $nombre, string $apellidos, string $email, int $edad, string $asignatura) {
+        parent::__construct($id, $nombre, $apellidos, $email, $edad);
+        $this->titular = false;  
         $this->asignatura = $asignatura;
     }
 
- 
-    public function esTitular() {
+    public function isTitular(): bool { 
         return $this->titular;
     }
 
-    public function getAsignatura() {
+    public function getAsignatura(): string {
         return $this->asignatura;
     }
 
-    public static function crearProfesoresDeMuestra() {
-       
-        $asignaturas = Asignatura::crearAsignaturasDeMuestra();
-
+    public static function crearProfesoresDeMuestra(array $asignaturas): array { 
         return [
-            new Profesor(true, $asignaturas[0]), 
-            new Profesor(false, $asignaturas[1]), 
-            new Profesor(true, $asignaturas[2]), 
-            new Profesor(false, $asignaturas[3]), 
-            new Profesor(true, $asignaturas[4])  
+            new Profesor(1, "Steve", "Wozniak", "steve@apple.com", 70, $asignaturas[0]),
+            new Profesor(2, "Ada", "Lovelace", "ada@gmail.com", 36, $asignaturas[1]),
+            new Profesor(3, "Taylor", "Otwell", "taylor@laravel.com", 35, $asignaturas[1]),
+            new Profesor(4, "Rasmus", "Lerdorf", "rasmus@php.com", 55, $asignaturas[2]) 
         ];
     }
-}
 
-$profesoresDeMuestra = Profesor::crearProfesoresDeMuestra();
-foreach ($profesoresDeMuestra as $profesor) {
-    $asignatura = $profesor->getAsignatura();
-    echo "Profesor Titular: " . ($profesor->esTitular() ? "Sí" : "No") . "\n";
-    echo "Asignatura: " . $asignatura->getNombre() . "\n";
-    echo "Créditos de la asignatura: " . $asignatura->getCreditos() . "\n";
-    echo "-------------------------\n";
+    public function __toString(): string { 
+        return "Profesor {id: " . $this->getId() .
+               ", nombre: " . $this->getNombre() .
+               ", apellidos: " . $this->getApellidos() .
+               ", email: " . $this->getEmail() .
+               ", edad: " . $this->getEdad() .
+               ", titular: " . ($this->titular ? "Sí" : "No") .
+               ", asignatura: " . $this->asignatura . "}";
+    }
 }
 ?>

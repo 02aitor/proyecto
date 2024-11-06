@@ -1,7 +1,7 @@
 <?php
-
 abstract class Miembro
 {
+
     private int $id;
     private string $nombre;
     private string $apellidos;
@@ -17,6 +17,7 @@ abstract class Miembro
         $this->edad = $edad;
     }
 
+
     public function getId(): int
     {
         return $this->id;
@@ -26,6 +27,7 @@ abstract class Miembro
     {
         return $this->nombre;
     }
+
     public function getApellidos(): string
     {
         return $this->apellidos;
@@ -40,6 +42,8 @@ abstract class Miembro
     {
         return $this->edad;
     }
+
+  
     public function setNombre(string $nombre): void
     {
         $this->nombre = $nombre;
@@ -52,11 +56,23 @@ abstract class Miembro
 
     public function setEmail(string $email): void
     {
-        $this->email = $email;
+        
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->email = $email;
+        } else {
+            throw new InvalidArgumentException("El formato del email no es válido.");
+        }
     }
+
     public function setEdad(int $edad): void
     {
-        $this->edad = $edad;
+      
+        if ($edad > 0) {
+            $this->edad = $edad;
+        } else {
+            throw new InvalidArgumentException("La edad debe ser un número positivo.");
+        }
     }
 }
 ?>
+
